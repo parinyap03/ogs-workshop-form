@@ -46,7 +46,7 @@ const Formstep3: React.FC = () => {
         <Form.Item
           // className="[&_div]:!flex-row [&_div_div:last-child]:!w-auto [&_div_.ant-form-item-explain-error]:translate-x-[-35%]"
           className="[&_div]:!flex-row [&_div_div:last-child]:!w-auto"
-          style={{marginTop:2}}
+      
           label="Gender :"
           name="gender"
           rules={[{ required: true, message: "Please select your gender!" }]}
@@ -58,7 +58,7 @@ const Formstep3: React.FC = () => {
         </Form.Item>
         <Form.Item label="งานอดิเรก">
           <Checkbox onChange={onCheckAllChange} checked={checkAll}>
-            Check all
+            เลือกทั้งหมด
           </Checkbox>
           <Divider style={{ margin: 10 }} />
           <CheckboxGroup
@@ -79,7 +79,13 @@ const Formstep3: React.FC = () => {
           className="[&_div]:!flex-row [&_div_div:last-child]:!w-auto "
           label="ยอมรับเงื่อนไข"
           name="accept"
-          rules={[{ required: true, message: "Please accept!" }]}
+          rules={[{ validator(_,value) {
+            // console.log(value);
+            if (value) {
+              return  Promise.resolve();
+            }
+            return Promise.reject(new Error ('Please accept condition!'));
+          },}]}
           valuePropName="checked"
         >
           <Switch />
