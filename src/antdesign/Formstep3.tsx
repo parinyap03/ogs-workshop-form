@@ -19,7 +19,8 @@ const plainOptions = ["ดูหนัง", "ฟังเพลง", "เล่�
 const defaultCheckedList = [""];
 
 const Formstep3: React.FC = () => {
-  const [checkedList, setCheckedList] = useState<CheckboxValueType[]>(defaultCheckedList);
+  const [checkedList, setCheckedList] =
+    useState<CheckboxValueType[]>(defaultCheckedList);
   const checkAll = plainOptions.length === checkedList.length;
 
   const onChange = (list: CheckboxValueType[]) => {
@@ -33,14 +34,23 @@ const Formstep3: React.FC = () => {
     <>
       <div style={{ width: "300px" }}>
         <div className="text-xl font-bold mt-5 mb-5">Confirm :</div>
-        <Form.Item label="birth date">
+        <Form.Item
+          label="birth date"
+          name="birth"
+          rules={[
+            { required: true, message: "Please select your birth date!" },
+          ]}
+        >
           <DatePicker style={{ width: "100%" }} />
         </Form.Item>
         <Form.Item
-          rules={[{ required: true, message: "Please select your gender!"}]}
-
-         >
-          Gender :{" "}
+          // className="[&_div]:!flex-row [&_div_div:last-child]:!w-auto [&_div_.ant-form-item-explain-error]:translate-x-[-35%]"
+          className="[&_div]:!flex-row [&_div_div:last-child]:!w-auto"
+          style={{marginTop:2}}
+          label="Gender :"
+          name="gender"
+          rules={[{ required: true, message: "Please select your gender!" }]}
+        >
           <Radio.Group>
             <Radio value="male"> ชาย </Radio>
             <Radio value="female"> หญิง </Radio>
@@ -65,8 +75,14 @@ const Formstep3: React.FC = () => {
         <Form.Item>
           <Input placeholder="ระบุ" />
         </Form.Item>
-        <Form.Item valuePropName="checked">
-          ยอมรับเงื่อนไข : <Switch />
+        <Form.Item
+          className="[&_div]:!flex-row [&_div_div:last-child]:!w-auto "
+          label="ยอมรับเงื่อนไข"
+          name="accept"
+          rules={[{ required: true, message: "Please accept!" }]}
+          valuePropName="checked"
+        >
+          <Switch />
         </Form.Item>
       </div>
     </>
