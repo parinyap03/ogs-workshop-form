@@ -46,12 +46,13 @@ const Formstep3: React.FC = () => {
         <Form.Item
           // className="[&_div]:!flex-row [&_div_div:last-child]:!w-auto [&_div_.ant-form-item-explain-error]:translate-x-[-35%]"
           className="[&_div]:!flex-row [&_div_div:last-child]:!w-auto"
-      
           label="Gender :"
           name="gender"
           rules={[{ required: true, message: "Please select your gender!" }]}
         >
-          <Radio.Group>
+          <Radio.Group
+          style={{marginBottom: "5px"}}
+          >
             <Radio value="male"> ชาย </Radio>
             <Radio value="female"> หญิง </Radio>
           </Radio.Group>
@@ -88,7 +89,7 @@ const Formstep3: React.FC = () => {
           },}]}
           valuePropName="checked"
         >
-          <Switch />
+          <Switch style={{marginBottom:"5px"}} />
         </Form.Item>
       </div>
     </>

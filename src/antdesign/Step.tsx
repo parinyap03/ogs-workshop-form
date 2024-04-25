@@ -60,17 +60,17 @@ const Step = () => {
                 }}
               >
                 {current > 0 && (
-                  <Button className="mr-5" onClick={() => prev()}>
+                  <Button className="mr-5 w-24 bg-orange-500" onClick={() => prev()} >
                     Previous
                   </Button>
                 )}
                 {current < steps.length - 1 && (
-                  <Button type="primary" htmlType="submit">
+                  <Button type="primary" htmlType="submit" className="w-24 bg-purple-500">
                     Next
                   </Button>
                 )}
                 {current === steps.length - 1 && (
-                  <Button type="primary" htmlType="submit">
+                  <Button type="primary" htmlType="submit" className="w-24 bg-pink-500">
                     Done
                   </Button>
                 )}
